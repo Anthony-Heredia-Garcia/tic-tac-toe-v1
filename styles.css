@@ -1,0 +1,79 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+header {
+  margin: 0;
+  background-color: #3961aa;
+  text-align: center;
+  padding: 1.5rem;
+  color: white;
+}
+
+.player-section {
+  margin: 1rem auto;
+  width: 60%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.player-container {
+  min-width: 200px;
+  padding: 2rem;
+  text-align: center;
+  background-color: #c4d2eb;
+}
+
+.player-container a:hover {
+  cursor: pointer;
+}
+
+button {
+  display: block;
+  margin: 1rem auto;
+}
+
+.game-layout {
+  display: none;
+  text-align: center;
+}
+
+.game-board {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  display: -ms-grid;
+  display: grid;
+  gap: .5rem;
+  -ms-grid-columns: (auto)[3];
+      grid-template-columns: repeat(3, auto);
+  -ms-grid-rows: (auto)[3];
+      grid-template-rows: repeat(3, auto);
+}
+
+.game-board div {
+  height: 100px;
+  width: 100px;
+  background-color: #3961aa;
+  border: 5px solid black;
+}
+
+.game-board div:hover {
+  background-color: #8ba6d8;
+}
+
+#chosen {
+  background-color: #8ba6d8;
+}
+/*# sourceMappingURL=styles.css.map */

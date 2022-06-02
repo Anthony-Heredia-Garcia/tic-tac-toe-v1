@@ -1,0 +1,68 @@
+$main-color: rgb(57, 97, 170);
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+header {
+  margin: 0;
+  background-color: $main-color;
+  text-align: center;
+  padding: 1.5rem;
+  color: white;
+}
+
+.player-section {
+  margin: 1rem auto;
+  width: 60%;
+  display: flex;
+  align-content: center;
+  justify-content: space-around;
+}
+
+.player-container {
+  min-width: 200px;
+  padding: 2rem;
+  text-align: center;
+  // display: inline-block;
+  background-color: lighten($color: $main-color, $amount: 40%);
+  a:hover {
+    cursor: pointer;
+  }
+}
+
+button {
+  display: block;
+  margin: 1rem auto;
+}
+
+.game-layout {
+  display: none;
+  text-align: center;
+}
+
+.game-board {
+  justify-content: center;
+  display: grid;
+  gap: .5rem;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(3, auto);
+  div {
+    height: 100px;
+    width: 100px;
+    background-color: $main-color;
+    border: 5px solid black;
+    &:hover {
+      background-color: lighten($color: $main-color, $amount: 25%);
+    }
+  }
+}
+
+#chosen {
+  background-color: lighten($color: $main-color, $amount: 25%);
+}
