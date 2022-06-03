@@ -31,8 +31,17 @@ function editName(event) {
 function startGame() {
   gameLayout.style.display = 'block';
   currentPlayer.textContent = player1;
+  if (gameLayout.style.display = 'block') {
+    resetGame();
+  }
 }
 
 function chooseTile(event) {
   event.target.setAttribute('id', 'chosen');
+}
+
+function resetGame() {
+  gameBoard.forEach(function(i) {
+    i.setAttribute('id', '');
+  })
 }
