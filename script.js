@@ -32,16 +32,29 @@ function startGame() {
   gameLayout.style.display = 'block';
   currentPlayer.textContent = player1;
   if (gameLayout.style.display = 'block') {
+    gameBtn.textContent = 'Reset Game?';
     resetGame();
   }
 }
 
 function chooseTile(event) {
-  event.target.setAttribute('id', 'chosen');
+  event.target.setAttribute('class', 'chosen');
+  updatePlayerDisplay();
 }
 
 function resetGame() {
   gameBoard.forEach(function(i) {
-    i.setAttribute('id', '');
+    i.setAttribute('class', '');
   })
+}
+
+function updatePlayerDisplay() {
+  switch (currentPlayer.textContent) {
+    case player1:
+      currentPlayer.textContent = player2;
+      break;
+    case player2: 
+      currentPlayer.textContent = player1;
+      break;
+  }
 }
