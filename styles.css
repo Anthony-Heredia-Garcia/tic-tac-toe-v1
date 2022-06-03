@@ -74,6 +74,6 @@ button {
 }
 
 .chosen {
-  background-color: #8ba6d8;
+  background-color: #8ba6d8 !important;
 }
 /*# sourceMappingURL=styles.css.map */

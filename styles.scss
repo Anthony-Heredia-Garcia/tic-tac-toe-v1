@@ -64,5 +64,5 @@ button {
 }
 
 .chosen {
-  background-color: lighten($color: $main-color, $amount: 25%);
+  background-color: lighten($color: $main-color, $amount: 25%) !important;
 }
