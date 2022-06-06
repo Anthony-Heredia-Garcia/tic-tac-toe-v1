@@ -1,3 +1,4 @@
+let playerTurn;
 const gameBtn = document.querySelector("button");
 const gameLayout = document.querySelector(".game-layout");
 const editPlayer1 = document.querySelector(".edit-player-1");
@@ -10,11 +11,30 @@ let player1;
 let player2;
 
 gameBoard.forEach(function (i) {
+  i.addEventListener("click", updateGameTile);
   i.addEventListener("click", chooseTile);
 });
 editPlayer1.addEventListener("click", editName);
 editPlayer2.addEventListener("click", editName);
 gameBtn.addEventListener("click", startGame);
+gameBtn.addEventListener("click", beginTurns);
+
+function beginTurns() {
+  playerTurn = player1;
+  console.log(playerTurn);
+}
+
+function updateTurn() {
+  switch (playerTurn) {
+    case player1:
+      playerTurn = player2;
+      break;
+    case player2:
+      playerTurn = player1;
+      break;
+  }
+  console.log(playerTurn);
+}
 
 function editName(event) {
   switch (event.target) {
@@ -31,6 +51,12 @@ function editName(event) {
 
 function startGame() {
   gameLayout.style.display = "block";
+  if (player1 === undefined) {
+    player1 = "Player 1";
+  }
+  if (player2 === undefined) {
+    player2 = "Player 2";
+  }
   currentPlayer.textContent = player1;
   if ((gameLayout.style.display = "block")) {
     gameBtn.textContent = "Reset Game?";
@@ -41,27 +67,22 @@ function startGame() {
 function chooseTile(event) {
   event.target.setAttribute("class", "chosen");
   updatePlayerDisplay();
-  updateGameTile();
+  updateTurn();
 }
 
 function resetGame() {
   gameBoard.forEach(function (i) {
     i.setAttribute("class", "");
+    i.innerHTML = "";
   });
 }
 
-function updateGameTile(gameBoard) {
-  console.log("click");
-  gameBoard.textContent = "O";
-  switch (currentPlayer.textContent) {
-    case player1:
-      console.log("Player1 turn");
-      gameBoard.setAttribute("text", "X");
-      break;
-    case player2:
-      console.log("Player2 turn");
-      gameBoard.textContent = "O";
-      break;
+function updateGameTile(event) {
+  console.log(event.target);
+  if (playerTurn === player1) {
+    event.target.innerHTML = "X";
+  } else if (playerTurn === player2) {
+    event.target.innerHTML = "O";
   }
 }
 
