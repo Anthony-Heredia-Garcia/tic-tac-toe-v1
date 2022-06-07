@@ -40,39 +40,44 @@ function editName(event) {
   switch (event.target) {
     case editPlayer1:
       player1Name.textContent = prompt("Enter a Username for Player 1");
+      if (!player1Name.textContent) {
+        player1Name.textContent = "Player 1";
+      }
       player1 = player1Name.textContent;
       break;
     case editPlayer2:
       player2Name.textContent = prompt("Enter a Username for Player 2");
+      if (!player2Name.textContent) {
+        player2Name.textContent = "Player 2";
+      }
       player2 = player2Name.textContent;
       break;
   }
-  checkEmpty();
+  setPlayerNames();
 }
 
 function checkEmpty() {
   if (!player1) {
-    player1 = "Player 1"
-    player1Name.textContent = "Player 1"
+    player1Name.textContent = "Player 1";
   } else if (!player2) {
-    player2 = "Player 2"
-    player2Name.textContent = "Player 2"
+    player2Name.textContent = "Player 2";
   }
 }
 
 function startGame() {
   gameLayout.style.display = "block";
-  if (player1 === undefined) {
-    player1 = "Player 1";
-  }
-  if (player2 === undefined) {
-    player2 = "Player 2";
-  }
-  currentPlayer.textContent = player1;
+  checkEmpty();
+  setPlayerNames ();
   if ((gameLayout.style.display = "block")) {
     gameBtn.textContent = "Reset Game?";
     resetGame();
   }
+}
+
+function setPlayerNames () {
+  player1 = player1Name.textContent;
+  player2 = player2Name.textContent;
+  currentPlayer.textContent = player1;
 }
 
 function chooseTile(event) {
