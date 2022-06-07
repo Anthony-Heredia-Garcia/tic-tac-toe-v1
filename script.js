@@ -39,13 +39,24 @@ function updateTurn() {
 function editName(event) {
   switch (event.target) {
     case editPlayer1:
-      player1 = prompt("Enter a Username for Player 1", "");
-      player1Name.textContent = player1;
+      player1Name.textContent = prompt("Enter a Username for Player 1");
+      player1 = player1Name.textContent;
       break;
     case editPlayer2:
-      player2 = prompt("Enter a Username for Player 2", "");
-      player2Name.textContent = player2;
+      player2Name.textContent = prompt("Enter a Username for Player 2");
+      player2 = player2Name.textContent;
       break;
+  }
+  checkEmpty();
+}
+
+function checkEmpty() {
+  if (!player1) {
+    player1 = "Player 1"
+    player1Name.textContent = "Player 1"
+  } else if (!player2) {
+    player2 = "Player 2"
+    player2Name.textContent = "Player 2"
   }
 }
 

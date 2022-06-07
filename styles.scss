@@ -30,7 +30,7 @@ header {
   padding: 2rem;
   text-align: center;
   // display: inline-block;
-  background-color: lighten($color: $main-color, $amount: 40%);
+  background-color: lighten($main-color, 40%);
   a:hover {
     cursor: pointer;
   }
@@ -59,10 +59,15 @@ button {
     border: 5px solid black;
     &:hover {
       background-color: lighten($color: $main-color, $amount: 25%);
+      cursor: pointer;
     }
   }
 }
 
 .chosen {
   background-color: lighten($color: $main-color, $amount: 25%) !important;
+  color: white;
+  font-size: 5rem;
+  font-weight: bold;
+  -webkit-text-stroke: 5px black;
 }

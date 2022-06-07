@@ -71,9 +71,14 @@ button {
 
 .game-board div:hover {
   background-color: #8ba6d8;
+  cursor: pointer;
 }
 
 .chosen {
   background-color: #8ba6d8 !important;
+  color: white;
+  font-size: 5rem;
+  font-weight: bold;
+  -webkit-text-stroke: 5px black;
 }
 /*# sourceMappingURL=styles.css.map */
