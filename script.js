@@ -68,6 +68,7 @@ function startGame() {
   gameLayout.style.display = "block";
   checkEmpty();
   setPlayerNames ();
+  disableEdit();
   if ((gameLayout.style.display = "block")) {
     gameBtn.textContent = "Reset Game?";
     resetGame();
@@ -78,6 +79,11 @@ function setPlayerNames () {
   player1 = player1Name.textContent;
   player2 = player2Name.textContent;
   currentPlayer.textContent = player1;
+}
+
+function disableEdit() {
+  editPlayer1.style.display = "none";
+  editPlayer2.style.display = "none";
 }
 
 function chooseTile(event) {
@@ -95,9 +101,9 @@ function resetGame() {
 
 function updateGameTile(event) {
   console.log(event.target);
-  if (playerTurn === player1) {
+  if (playerTurn == player1) {
     event.target.innerHTML = "X";
-  } else if (playerTurn === player2) {
+  } else if (playerTurn == player2) {
     event.target.innerHTML = "O";
   }
 }
