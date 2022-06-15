@@ -10,10 +10,15 @@ const gameBoard = document.querySelectorAll(".game-board > div");
 let player1;
 let player2;
 
-gameBoard.forEach(function (i) {
-  i.addEventListener("click", updateGameTile);
-  i.addEventListener("click", chooseTile);
-});
+function initializeGameBoard () {
+  gameBoard.forEach(function (i) {
+    i.removeEventListener('click', updateGameTile); 
+    i.removeEventListener('click', chooseTile); 
+    i.addEventListener("click", updateGameTile, {once: true});
+    i.addEventListener("click", chooseTile, {once: true});
+  });
+}
+
 editPlayer1.addEventListener("click", editName);
 editPlayer2.addEventListener("click", editName);
 gameBtn.addEventListener("click", startGame);
@@ -72,6 +77,7 @@ function startGame() {
   if ((gameLayout.style.display = "block")) {
     gameBtn.textContent = "Reset Game?";
     resetGame();
+    initializeGameBoard();
   }
 }
 
