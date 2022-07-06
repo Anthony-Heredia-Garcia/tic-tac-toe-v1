@@ -67,4 +67,8 @@ button {
   font-size: 5rem;
   font-weight: bold;
   -webkit-text-stroke: 5px black;
+}
+
+.modal {
+  text-align: center;
 }/*# sourceMappingURL=styles.css.map */

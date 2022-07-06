@@ -1,4 +1,14 @@
 let playerTurn;
+const WINNING_COMBOS = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6]
+]
 const gameBtn = document.querySelector("button");
 const gameLayout = document.querySelector(".game-layout");
 const editPlayer1 = document.querySelector(".edit-player-1");
@@ -7,6 +17,9 @@ const player1Name = document.querySelector(".player-1-name");
 const player2Name = document.querySelector(".player-2-name");
 const currentPlayer = document.querySelector(".current-player");
 const gameBoard = document.querySelectorAll(".game-board > div");
+const modal = document.querySelector(".modal");
+const playAgainBtn = document.querySelector(".playAgain");
+const winner = document.querySelector(".winner");
 let player1;
 let player2;
 
@@ -19,6 +32,7 @@ function initializeGameBoard () {
   });
 }
 
+playAgainBtn.addEventListener("click", startGame);
 editPlayer1.addEventListener("click", editName);
 editPlayer2.addEventListener("click", editName);
 gameBtn.addEventListener("click", startGame);
@@ -61,17 +75,9 @@ function editName(event) {
   setPlayerNames();
 }
 
-function checkEmpty() {
-  if (!player1) {
-    player1Name.textContent = "Player 1";
-  } else if (!player2) {
-    player2Name.textContent = "Player 2";
-  }
-}
-
 function startGame() {
   gameLayout.style.display = "block";
-  checkEmpty();
+  modal.close();
   setPlayerNames ();
   disableEdit();
   if ((gameLayout.style.display = "block")) {
@@ -94,8 +100,18 @@ function disableEdit() {
 
 function chooseTile(event) {
   event.target.setAttribute("class", "chosen");
-  updatePlayerDisplay();
-  updateTurn();
+  
+  
+  if (checkForWin()) {
+    modal.showModal();
+    winner.textContent = `${currentPlayer.textContent} Wins!`
+  } else if (isDraw()) {
+    modal.showModal();
+    winner.textContent = "Draw!"
+  } else{
+    updatePlayerDisplay();
+    updateTurn();
+  }
 }
 
 function resetGame() {
@@ -123,4 +139,34 @@ function updatePlayerDisplay() {
       currentPlayer.textContent = player1;
       break;
   }
+}
+
+// function checkForWin() {
+//   return WINNING_COMBOS.some (combination => {
+//     return combination.every(index => {
+//        return gameBoard[index].innerHTML.includes("X")
+//     })
+//   })
+// }
+
+function checkForWin() {
+  switch (playerTurn) {
+    case player1:
+    return WINNING_COMBOS.some (combination => {
+      return combination.every(index => {
+         return gameBoard[index].innerHTML.includes("X")
+      })
+    })
+    case player2: 
+    return WINNING_COMBOS.some (combination => {
+      return combination.every(index => {
+         return gameBoard[index].innerHTML.includes("O")
+      })
+  })
+}}
+
+function isDraw() {
+  return [...gameBoard].every(cell => {
+    return cell.innerHTML.includes("X") || cell.innerHTML.includes("O")
+  })
 }
