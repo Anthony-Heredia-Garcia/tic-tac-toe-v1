@@ -78,16 +78,17 @@ function editName(event) {
 function startGame() {
   gameLayout.style.display = "block";
   modal.close();
-  setPlayerNames ();
+  setPlayerNames();
   disableEdit();
   if ((gameLayout.style.display = "block")) {
     gameBtn.textContent = "Reset Game?";
     resetGame();
     initializeGameBoard();
+    beginTurns();
   }
 }
 
-function setPlayerNames () {
+function setPlayerNames() {
   player1 = player1Name.textContent;
   player2 = player2Name.textContent;
   currentPlayer.textContent = player1;
