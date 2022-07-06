@@ -71,4 +71,15 @@ button {
 
 .modal {
   text-align: center;
+}
+
+@media (max-width: 600px) {
+  .player-section {
+    display: block;
+    width: 80%;
+  }
+
+  .player-container {
+    margin-bottom: 0.5rem;
+  }
 }/*# sourceMappingURL=styles.css.map */
